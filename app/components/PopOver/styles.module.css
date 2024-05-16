@@ -1,0 +1,17 @@
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.modal {
+  position: absolute;
+  z-index: 9999;
+  width: max-content;
+  background: white;
+  border-radius: 4px;
+  padding: 8px;
+  border-color: #d9d9d9;
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+    0 3px 6px -4px rgba(0, 0, 0, 0.12),
+    0 9px 28px 8px rgba(0, 0, 0, 0.05);
+}

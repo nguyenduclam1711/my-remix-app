@@ -55,6 +55,9 @@ module.exports = {
       files: ["**/*.{ts,tsx}"],
       plugins: ["@typescript-eslint", "import"],
       parser: "@typescript-eslint/parser",
+      rules: {
+        "@typescript-eslint/no-explicit-any": ["off"],
+      },
       settings: {
         "import/internal-regex": "^~/",
         "import/resolver": {
@@ -81,4 +84,10 @@ module.exports = {
       },
     },
   ],
+  rules: {
+    quotes: ["error", "double"],
+    semi: ["error", "always", {
+      "omitLastInOneLineClassBody": true,
+    }],
+  },
 };
