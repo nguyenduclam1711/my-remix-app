@@ -38,15 +38,18 @@ export default function Index() {
           </div>
         }
       >
-        <button
-          style={{
-            width: 100,
-            padding: 80,
-            margin: 80,
-          }}
-        >
-          test button
-        </button>
+        <div style={{
+          margin: 80,
+        }}>
+          <button
+            style={{
+              width: 100,
+              padding: 100,
+            }}
+          >
+            test button
+          </button>
+        </div>
       </PopOver>
     </div>
   );
