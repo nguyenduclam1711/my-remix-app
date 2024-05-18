@@ -2,13 +2,13 @@ import { RefObject, useEffect } from "react";
 
 type UseClickOutsideArgs = {
   onClickOutside: () => void;
-  ref: RefObject<HTMLDivElement>;
+  containerRef: RefObject<HTMLDivElement>;
 };
 export const useClickOutside = (args: UseClickOutsideArgs) => {
-  const { ref, onClickOutside } = args;
+  const { containerRef, onClickOutside } = args;
 
   useEffect(() => {
-    const element = ref.current;
+    const element = containerRef.current;
     if (!element) {
       return;
     }
@@ -24,5 +24,5 @@ export const useClickOutside = (args: UseClickOutsideArgs) => {
         0
       );
     };
-  }, [ref, onClickOutside]);
+  }, [containerRef, onClickOutside]);
 };

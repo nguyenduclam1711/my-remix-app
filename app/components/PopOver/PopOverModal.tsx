@@ -1,32 +1,40 @@
-import { ReactNode, forwardRef, useEffect, useState } from "react";
+import { ReactNode, forwardRef, useRef } from "react";
 
 import styles from "./styles.module.css";
+import { RectPosition } from "./types";
 
 type PopOverModalProps = {
   children: ReactNode;
-}
-const PopOverModal = forwardRef((props: PopOverModalProps, ref: any) => {
-  const { children } = props;
-  const [boxHeight, setBoxHeight] = useState(0);
+  position: RectPosition;
+};
+const PopOverModal = forwardRef<HTMLDivElement, PopOverModalProps>(
+  (props, ref) => {
+    const { children, position } = props;
+    const currRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    if (ref.current) {
-      setBoxHeight(ref.current?.clientHeight);
-    }
-  }, [ref.current?.clientHeight]);
+    return (
+      <div
+        className={styles.modal}
+        style={{
+          top: position.top,
+          left: position.left,
+          opacity: position.top > 0 ? 1 : 0,
+        }}
+        ref={(node) => {
+          currRef.current = node;
+          if (typeof ref === "function") {
+            ref(node);
+          } else if (ref) {
+            ref.current = node;
+          }
+        }}
+      >
+        {children}
+      </div>
+    );
+  }
+);
 
-  return (
-    <div
-      className={styles.modal}
-      style={{
-        bottom: -boxHeight,
-        opacity: boxHeight > 0 ? 1 : 0,
-      }}
-      ref={ref}
-    >
-      {children}
-    </div>
-  );
-});
+PopOverModal.displayName = "PopOverModal";
 
 export default PopOverModal;
