@@ -24,7 +24,7 @@ export default function Index() {
         <input />
       </PopOver>
       <PopOver content="kladjfklsdajf">
-        <div>hehe</div>
+        <span>hehe</span>
       </PopOver>
       <PopOver
         content={
